@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 60 14% 96%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 9 100% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 233 100% 59%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 60 14% 92%;
+    --muted-foreground: 30 4% 42%;
+    --accent: 9 100% 59%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 7%;
+    --input: 0 0% 90%;
+    --ring: 9 100% 59%;
+    --radius: 1.125rem;
+    
+    /* Custom colors */
+    --coral: #FF4D2E;
+    --blue: #2F45FF;
+    --off-white: #F6F6F2;
+    --black: #111111;
+    --text-secondary: #6D6A66;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#F6F6F2] text-[#111111] antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .card-border {
+    border: 3px solid #111111;
+    border-radius: 28px;
+  }
+  
+  .card-border-sm {
+    border: 3px solid #111111;
+    border-radius: 18px;
+  }
+  
+  .shadow-card {
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.10);
+  }
+  
+  .btn-primary {
+    @apply bg-[#FF4D2E] text-white font-semibold px-6 py-3 rounded-full transition-all duration-200;
+  }
+  
+  .btn-primary:hover {
+    @apply -translate-y-0.5;
+    box-shadow: 0 8px 24px rgba(255, 77, 46, 0.35);
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent text-[#111111] font-semibold px-6 py-3 rounded-full border-2 border-[#111111] transition-all duration-200;
+  }
+  
+  .btn-secondary:hover {
+    @apply -translate-y-0.5 bg-[#111111] text-white;
+  }
+  
+  .nav-pill {
+    @apply bg-[#2F45FF] border-[3px] border-[#111111] rounded-full;
+  }
+  
+  .section-padding {
+    @apply px-[7vw] py-[8vh];
+  }
+  
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.04;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  
+  .sparkle {
+    animation: sparkle-pulse 2.5s ease-in-out infinite;
+  }
+  
+  @keyframes sparkle-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  
+  .floating-card {
+    @apply bg-white card-border shadow-card overflow-hidden;
+  }
+  
+  .split-panel-blue {
+    @apply bg-[#2F45FF] border-r-[3px] border-[#111111];
+  }
+  
+  .stat-card-blue {
+    @apply bg-[#2F45FF] text-white card-border-sm;
+  }
+  
+  .stat-card-coral {
+    @apply bg-[#FF4D2E] text-white card-border-sm;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F6F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6D6A66;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111111;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
